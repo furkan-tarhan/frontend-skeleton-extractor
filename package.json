@@ -1,21 +1,22 @@
 {
   "name": "frontend-skeleton-extractor",
-  "version": "0.1.0",
-  "description": "Starter tools to extract a static frontend skeleton and color palette from public websites (disabled by default for safety)",
+  "version": "0.2.0",
+  "description": "Extract a learnable frontend skeleton (structure + design tokens) from a public URL for rebuilding your own UI",
   "main": "src/extractor.js",
   "scripts": {
     "extract": "node src/extractor.js --config example-config.json",
+    "extract:url": "node src/extractor.js --url",
     "purge": "node src/collect-styles.js --dir ./out"
   },
   "author": "furkan-tarhan",
   "license": "MIT",
   "dependencies": {
-    "cheerio": "*",
-    "node-vibrant": "*",
-    "purgecss": "*",
-    "website-scraper": "*",
-    "minimist": "*",
-    "puppeteer": "*",
-    "glob": "*"
+    "cheerio": "^1.0.0",
+    "glob": "^11.0.0",
+    "minimist": "^1.2.8",
+    "node-vibrant": "^4.0.0",
+    "puppeteer": "^24.0.0",
+    "purgecss": "^7.0.0",
+    "website-scraper": "^5.3.1"
   }
 }

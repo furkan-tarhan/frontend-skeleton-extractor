@@ -1,7 +1,9 @@
 {
   "target": "https://example.com",
   "outDir": "./out",
-  "maxDepth": 2,
-  "allow_live_download": false,
-  "notes": "Set allow_live_download to true only after you check the target site's policies. This file is a safe example."
+  "allow_live_download": true,
+  "viewportWidth": 1440,
+  "viewportHeight": 900,
+  "waitMs": 1500,
+  "notes": "Pass --url to override target. Set allow_live_download false to require --url/--force."
 }
