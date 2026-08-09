@@ -1,8 +1,8 @@
 # frontend-skeleton-extractor
 
-Bir URL'den **öğrenilebilir frontend iskeleti** çıkarır: layout yapısı, tasarım token'ları ve düzenlenebilir skeleton HTML.
+Bir URL'den **öğrenilebilir frontend iskeleti** çıkarır: layout landmarks, UI pattern'leri, tasarım token'ları, skeleton HTML ve isteğe bağlı **React + Tailwind starter proje**.
 
-Bu araç site klonu üretmez. Amaç: referans alıp **kendi arayüzünü yeniden kurmak**.
+Site klonu üretmez. Amaç: referans alıp **kendi arayüzünü yeniden kurmak**.
 
 ---
 
@@ -10,15 +10,17 @@ Bu araç site klonu üretmez. Amaç: referans alıp **kendi arayüzünü yeniden
 
 `./out/<host>/` altında:
 
-| Dosya | Ne işe yarar |
-|--------|----------------|
-| `outline.txt` | Sayfa bölümlerinin okunabilir haritası |
-| `structure.json` | Header / hero / grid / footer ağacı |
+| Dosya / klasör | Ne işe yarar |
+|----------------|--------------|
+| `patterns-summary.json` | Tanınan UI pattern'leri + `unrecognized` sayısı |
+| `outline.txt` | Pattern listesi + yapı ağacı (okunabilir) |
+| `structure.json` | Landmark ağacı (bounds, pattern, textSample) |
 | `tokens.json` | Font, renk, spacing, radius örnekleri |
 | `skeleton.html` | Script'siz, placeholder'lı yapısal HTML |
 | `screenshot.png` | Tam sayfa görüntü |
-| `palette.json` | Baskın renkler |
+| `palette.json` | Baskın renkler (Vibrant vb.) |
 | `rendered.html` | Ham render DOM (sadece referans) |
+| `scaffold/` | `--scaffold` ile: çalıştırılabilir React+Vite+Tailwind iskeleti |
 
 ---
 
@@ -28,38 +30,85 @@ Bu araç site klonu üretmez. Amaç: referans alıp **kendi arayüzünü yeniden
 npm install
 ```
 
+İlk çalıştırmada Puppeteer Chrome indirmesi gerekebilir:
+
+```bash
+npx puppeteer browsers install chrome
+```
+
+---
+
 ## Kullanım
 
 ```bash
-# Hızlı (önerilen)
+# Temel extract
 node src/extractor.js --url https://example.com
+
+# Pattern + scaffold (React + Tailwind starter)
+node src/extractor.js --url https://example.com --scaffold
+node src/extractor.js --url https://example.com --scaffold --framework react
 
 # Config ile
 node src/extractor.js --config example-config.json
 ```
 
-Opsiyonlar:
-- `--out ./out` çıktı klasörü
-- `--width 1440` / `--height 900` viewport
-- `--wait 1500` render sonrası ekstra bekleme (ms)
-- `--force` config kilidini bypass eder
+### CLI seçenekleri
+
+| Flag | Açıklama |
+|------|----------|
+| `--url` / `-u` | Hedef URL |
+| `--scaffold` | `out/<host>/scaffold/` altında React+Tailwind proje üret |
+| `--framework react` | Scaffold framework (şimdilik sadece `react`) |
+| `--out ./out` | Çıktı kökü |
+| `--width` / `--height` | Viewport (varsayılan 1440×900) |
+| `--wait 1500` | Render sonrası ekstra bekleme (ms) |
+| `--force` | Config kilidini bypass eder |
+| `--config` | JSON config dosyası |
 
 ---
 
-## Nasıl kullanılır? (senin hedefin)
+## Pattern tanıma
 
-1. Hedef siteyi çıkar.
-2. `outline.txt` + `tokens.json` ile yapıyı ve stili anla.
-3. `skeleton.html`'i **başlangıç referansı** olarak kullan.
-4. Kendi component'lerini, içeriğini ve markanı kur — birebir kopyalama.
+Her landmark için mümkünse bir pattern atanır (`hero`, `navigation`, `faq-accordion`, `info-block`, …).  
+Gerçek sinyali olmayanlar `pattern: null` kalır — fallback kovalarla `unrecognized` yapay olarak sıfırlanmaz.
+
+---
+
+## Scaffold
+
+`--scaffold` sonrası:
+
+```bash
+cd out/<host>/scaffold
+npm install
+npm run dev
+```
+
+- Her landmark → boş ama isimlendirilmiş component (`Hero.jsx`, `FaqAccordion.jsx`, `Section01.jsx`, …)
+- `tailwind.config.js` ← `tokens.json` + `palette.json` (renk / font / spacing / radius)
+- `App.jsx` ← landmark sırasına göre bileşenler
+- İçerik **placeholder**; orijinal site metni/görseli kopyalanmaz
+
+`borderRadius`: yüzde değerler `circle`, pill/köşe px değerleri `sm` / `lg` / `xl` — uydurma `md` yok.
+
+---
+
+## Nasıl kullanılır?
+
+1. Hedef siteyi çıkar (`--scaffold` önerilir).
+2. `patterns-summary.json` + `outline.txt` ile bölümleri anla.
+3. `scaffold/` içinde kendi içeriğini ve markanı koy — veya `skeleton.html` / `tokens.json` ile sıfırdan kur.
+4. Birebir kopyalama; referans / ilham için kullan.
 
 ---
 
 ## Notlar
 
 - JS ile render olan siteler için Puppeteer kullanılır.
+- Bazı sitelerde footer DOM'da hiç olmayabilir; bu durumda pattern atanamaz.
+- Cloudflare / bot koruması extract'ı engelleyebilir.
 - Hedef sitenin ToS / robots.txt kurallarına uy.
-- Eski CSS purge helper hâlâ var: `npm run purge` (opsiyonel).
+- Opsiyonel eski helper: `npm run purge`
 
 ## Lisans
 

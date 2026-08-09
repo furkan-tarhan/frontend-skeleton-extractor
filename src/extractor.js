@@ -5,6 +5,8 @@
 
   Usage:
     node src/extractor.js --url https://example.com
+    node src/extractor.js --url https://example.com --scaffold
+    node src/extractor.js --url https://example.com --scaffold --framework react
     node src/extractor.js --config example-config.json
 
   Outputs (./out/<host>/):
@@ -15,6 +17,7 @@
     screenshot.png  — full-page screenshot
     palette.json    — dominant colors from screenshot
     rendered.html   — raw rendered DOM (reference only)
+    scaffold/       — React+Tailwind starter (when --scaffold)
 */
 
 const fs = require('fs');
@@ -24,12 +27,18 @@ const puppeteer = require('puppeteer');
 const { Vibrant } = require('node-vibrant/node');
 const {
   pageExtractScript,
+  sanitizeForSkeletonScript,
+  cleanDOM,
   buildSkeletonHtml,
   structureOutline,
   landmarksOutline,
+  buildPatternsSummary,
 } = require('./skeleton');
+const { generateScaffold } = require('./scaffold');
 
-const argv = minimist(process.argv.slice(2));
+const argv = minimist(process.argv.slice(2), {
+  boolean: ['scaffold', 'force'],
+});
 const configPath = argv.config || 'example-config.json';
 
 function loadConfig() {
@@ -64,6 +73,8 @@ function loadConfig() {
     viewportWidth: Number(argv.width || config.viewportWidth || 1440),
     viewportHeight: Number(argv.height || config.viewportHeight || 900),
     waitMs: Number(argv.wait || config.waitMs || 1500),
+    scaffold: argv.scaffold === true || config.scaffold === true,
+    framework: String(argv.framework || config.framework || 'react').toLowerCase(),
   };
 }
 
@@ -137,10 +148,14 @@ function writeJson(file, data) {
     const extracted = await page.evaluate(pageExtractScript);
     const generatedAt = new Date().toISOString();
 
+    // Raw rendered DOM kept for reference
     fs.writeFileSync(path.join(dest, 'rendered.html'), extracted.html, 'utf8');
     console.log('rendered.html');
 
-    const skeletonHtml = buildSkeletonHtml(extracted.html, {
+    // Mutate live DOM for skeleton (wrapper dedup / svg / astro / links), then Node clean
+    const skeletonSource = await page.evaluate(sanitizeForSkeletonScript);
+    const sanitizedHtml = cleanDOM(skeletonSource);
+    const skeletonHtml = buildSkeletonHtml(sanitizedHtml, {
       url: extracted.url || url,
       generatedAt,
     });
@@ -158,14 +173,31 @@ function writeJson(file, data) {
     writeJson(path.join(dest, 'structure.json'), structurePayload);
     console.log('structure.json');
 
+    const patternsSummary = buildPatternsSummary(extracted.landmarks || []);
+    writeJson(path.join(dest, 'patterns-summary.json'), {
+      source: extracted.url || url,
+      generatedAt,
+      ...patternsSummary,
+      footerProbe: extracted.footerProbe || null,
+    });
+    console.log('patterns-summary.json');
+
+    // Prefer hierarchical tree in outline; flat landmarks as secondary scan
     const treeLines = structureOutline(extracted.structure);
     const landmarkLines = landmarksOutline(extracted.landmarks || []);
+    const patternLines = (patternsSummary.detected || [])
+      .map((d) => `- ${d.pattern} ×${d.count} (landmarks: ${d.landmarkIndices.join(', ')})`)
+      .join('\n');
     const outlineBody = [
-      '=== LANDMARKS (recommended) ===',
-      landmarkLines.join('\n') || '(none)',
+      '=== PATTERNS ===',
+      patternLines || '(none detected)',
+      `unrecognized landmarks: ${patternsSummary.unrecognized}`,
       '',
-      '=== DOM TREE ===',
+      '=== STRUCTURE TREE ===',
       treeLines.join('\n') || '(empty)',
+      '',
+      '=== LANDMARKS (flat, deduped) ===',
+      landmarkLines.join('\n') || '(none)',
       '',
     ].join('\n');
     fs.writeFileSync(
@@ -185,9 +217,10 @@ function writeJson(file, data) {
     writeJson(path.join(dest, 'tokens.json'), tokensPayload);
     console.log('tokens.json');
 
+    let paletteOut = {};
     try {
       const palette = await Vibrant.from(screenshotPath).getPalette();
-      const paletteOut = Object.keys(palette).reduce((acc, k) => {
+      paletteOut = Object.keys(palette).reduce((acc, k) => {
         acc[k] = palette[k] ? palette[k].hex : null;
         return acc;
       }, {});
@@ -197,27 +230,62 @@ function writeJson(file, data) {
       console.warn('Palette extraction skipped:', err.message);
     }
 
+    let scaffoldResult = null;
+    if (config.scaffold) {
+      try {
+        scaffoldResult = generateScaffold({
+          outDir: dest,
+          landmarks: extracted.landmarks || [],
+          tokens: extracted.tokens || {},
+          palette: paletteOut,
+          framework: config.framework,
+          host,
+          sourceUrl: extracted.url || url,
+        });
+        console.log(`scaffold/ (${scaffoldResult.components.length} components, ${scaffoldResult.framework})`);
+        console.log(`  cd ${scaffoldResult.dir} && npm install && npm run dev`);
+      } catch (err) {
+        console.error('Scaffold generation failed:', err.message || err);
+        process.exit(4);
+      }
+    }
+
+    const outputs = [
+      'skeleton.html',
+      'structure.json',
+      'patterns-summary.json',
+      'tokens.json',
+      'outline.txt',
+      'screenshot.png',
+      'palette.json',
+      'rendered.html',
+    ];
+    if (scaffoldResult) outputs.push('scaffold/');
+
     writeJson(path.join(dest, 'meta.json'), {
       source: url,
       finalUrl: extracted.url || url,
       title: extracted.title,
       generatedAt,
-      outputs: [
-        'skeleton.html',
-        'structure.json',
-        'tokens.json',
-        'outline.txt',
-        'screenshot.png',
-        'palette.json',
-        'rendered.html',
-      ],
-      howToUse:
-        'Open skeleton.html + tokens.json + outline.txt. Rebuild your own frontend using the layout roles and tokens as reference — change structure, content, and brand freely.',
+      outputs,
+      scaffold: scaffoldResult
+        ? {
+            framework: scaffoldResult.framework,
+            components: scaffoldResult.components,
+            path: 'scaffold/',
+          }
+        : null,
+      howToUse: scaffoldResult
+        ? 'Open scaffold/ and run npm install && npm run dev. Use patterns-summary.json + tokens as reference — replace placeholders with your own brand.'
+        : 'Open patterns-summary.json + outline.txt + tokens.json. Rebuild your own frontend using detected UI patterns and design tokens as reference — change structure, content, and brand freely.',
     });
 
     console.log('\nDone. Start with:');
+    if (scaffoldResult) {
+      console.log(`  ${scaffoldResult.dir}`);
+    }
+    console.log(`  ${path.join(dest, 'patterns-summary.json')}`);
     console.log(`  ${path.join(dest, 'outline.txt')}`);
-    console.log(`  ${path.join(dest, 'tokens.json')}`);
     console.log(`  ${path.join(dest, 'skeleton.html')}`);
   } catch (err) {
     console.error('Extraction failed:', err.message || err);
