@@ -6,7 +6,8 @@
   "scripts": {
     "extract": "node src/extractor.js --config example-config.json",
     "extract:url": "node src/extractor.js --url",
-    "purge": "node src/collect-styles.js --dir ./out"
+    "purge": "node src/collect-styles.js --dir ./out",
+    "test": "node --test"
   },
   "author": "furkan-tarhan",
   "license": "MIT",
@@ -16,7 +17,6 @@
     "minimist": "^1.2.8",
     "node-vibrant": "^4.0.0",
     "puppeteer": "^24.0.0",
-    "purgecss": "^7.0.0",
-    "website-scraper": "^5.3.1"
+    "purgecss": "^7.0.0"
   }
 }

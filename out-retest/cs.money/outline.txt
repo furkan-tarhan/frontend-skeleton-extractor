@@ -1,0 +1,49 @@
+Source: https://cs.money/
+Title: CS.MONEY Takas Botu — CS:GO/CS2 Skin ve Eşyaları Için Hızlı Takas, Alım ve Satım Botu
+
+=== PATTERNS ===
+- info-block ×4 (landmarks: 10, 11, 12, 13)
+- stat-cards ×2 (landmarks: 3, 8)
+- about ×1 (landmarks: 9)
+- cta-banner ×1 (landmarks: 6)
+- faq-accordion ×1 (landmarks: 7)
+- feature-grid ×1 (landmarks: 4)
+- hero ×1 (landmarks: 1)
+- navigation ×1 (landmarks: 0)
+- search-bar ×1 (landmarks: 2)
+unrecognized landmarks: 2
+
+=== STRUCTURE TREE ===
+- page <body> 1440x5735 "Takas Market SSS ANINDA SAT ₺ TRY Steam "
+  - [navigation] header <div> #layout-page-header .csm_2b50660c 1440x64 "Takas Market SSS ANINDA SAT ₺ TRY Steam "
+  - [hero] section .csm_ac45a513 1440x870 "Cephanelikteki yeni skinleri keşfet! Yen"
+    - [search-bar] div .InputContainer-module_container__oDstE.InputContainer-module_size-lg__9Q0oa 592x48
+  - [stat-cards] section .csm_ac45a513 1440x152 "7/24 canlı destek Oyunu biliyoruz, sitey"
+  - [feature-grid] section .csm_ac45a513 1440x308 "Takas Anında takaslar Nadir eşyalarınızı"
+  - section .csm_ac45a513 1440x198
+  - [cta-banner] section .csm_ac45a513 1440x700 "Mükemmel skini bulun Oturum aç"
+  - [faq-accordion] section .csm_ac45a513 1440x992 "SSS CS.MONEY güvenli ve itibarlı mıdır? "
+  - [stat-cards] section .csm_ac45a513 1440x998 "CS.MONEY Hakkında Genel bilgiler CS.MONE"
+    - [about] section #general-information .csm_59ab2e01 1116x96 "Genel bilgiler CS.MONEY, CS2 skinlerinin"
+    - [info-block] section #trade-mode .csm_59ab2e01 1116x132 "Takas modu Trade modu özellikleri: Bekle"
+    - [info-block] section #market-mode .csm_59ab2e01 1116x132 "Market modu Market modu özellikleri: Anı"
+    - [info-block] section #security .csm_59ab2e01 1116x120 "Güvenlik CS.MONEY tamamen güvenli bir pl"
+    - [info-block] section #community .csm_59ab2e01 1116x144 "Topluluk CS.MONEY, Discord sunucusu da d"
+  - h3 .csm_050c5fea 1408x26 "Popüler CS2 skinleri"
+
+=== LANDMARKS (flat, deduped) ===
+- [navigation] header <div> #layout-page-header .csm_2b50660c @0px 1440x64 "Takas Market SSS ANINDA SAT ₺ TRY Steam ile giriş "
+- [hero] section .csm_ac45a513 @88px 1440x870 "Cephanelikteki yeni skinleri keşfet! Yeni Arabesk "
+- [search-bar] div .InputContainer-module_container__oDstE.InputContainer-module_size-lg__9Q0oa @620px 592x48
+- [stat-cards] section .csm_ac45a513 @1038px 1440x152 "7/24 canlı destek Oyunu biliyoruz, siteyi biliyoru"
+- [feature-grid] section .csm_ac45a513 @1270px 1440x308 "Takas Anında takaslar Nadir eşyalarınızı sattığını"
+- section .csm_ac45a513 @1658px 1440x198
+- [cta-banner] section .csm_ac45a513 @1936px 1440x700 "Mükemmel skini bulun Oturum aç"
+- [faq-accordion] section .csm_ac45a513 @2716px 1440x992 "SSS CS.MONEY güvenli ve itibarlı mıdır? Elbette öy"
+- [stat-cards] section .csm_ac45a513 @3788px 1440x998 "CS.MONEY Hakkında Genel bilgiler CS.MONEY, CS2 ski"
+- [about] section #general-information .csm_59ab2e01 @3866px 1116x96 "Genel bilgiler CS.MONEY, CS2 skinlerinin alım satı"
+- [info-block] section #trade-mode .csm_59ab2e01 @4162px 1116x132 "Takas modu Trade modu özellikleri: Beklemeden, eşy"
+- [info-block] section #market-mode .csm_59ab2e01 @4326px 1116x132 "Market modu Market modu özellikleri: Anında teslim"
+- [info-block] section #security .csm_59ab2e01 @4490px 1116x120 "Güvenlik CS.MONEY tamamen güvenli bir platformdur."
+- [info-block] section #community .csm_59ab2e01 @4642px 1116x144 "Topluluk CS.MONEY, Discord sunucusu da dahil olmak"
+- h3 .csm_050c5fea @5222px 1408x26 "Popüler CS2 skinleri"

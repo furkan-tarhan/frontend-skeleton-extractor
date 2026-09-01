@@ -1,0 +1,1313 @@
+{
+  "source": "https://cs.money/tr/",
+  "title": "CS.MONEY Takas Botu — CS:GO/CS2 Skin ve Eşyaları Için Hızlı Takas, Alım ve Satım Botu",
+  "generatedAt": "2026-08-09T10:20:13.525Z",
+  "note": "Structural map for rebuilding your own UI — not a pixel-perfect clone.",
+  "landmarks": [
+    {
+      "role": "header",
+      "tag": "div",
+      "id": "layout-page-header",
+      "classes": [
+        "csm_2b50660c"
+      ],
+      "textSample": "Takas Market SSS ANINDA SAT ₺ TRY Steam ile giriş yap",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "w": 1440,
+        "h": 64
+      },
+      "styles": {
+        "display": "block",
+        "position": "relative",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "navigation",
+        "confidence": 0.85,
+        "signals": [
+          "nav semantic or nav/header class",
+          "header/nav host with 5 horizontal links"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "Cephanelikteki yeni skinleri keşfet! Yeni Arabesk ve Casusluk/Teknoloji koleksiyonları şimdi erişile…",
+      "bounds": {
+        "x": 0,
+        "y": 88,
+        "w": 1440,
+        "h": 870
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "hero",
+        "confidence": 0.6,
+        "signals": [
+          "near-top tall section with h1 (42px)",
+          "h1 font-size reinforces hero"
+        ]
+      }
+    },
+    {
+      "role": "div",
+      "tag": "div",
+      "id": null,
+      "classes": [
+        "InputContainer-module_container__oDstE",
+        "InputContainer-module_size-lg__9Q0oa",
+        "Input-module_container__ynU7n",
+        "SearchInput-module_container__WZ8PL"
+      ],
+      "textSample": "",
+      "bounds": {
+        "x": 360,
+        "y": 620,
+        "w": 592,
+        "h": 48
+      },
+      "styles": {
+        "display": "flex",
+        "position": "relative",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "center",
+        "gridTemplateColumns": "none",
+        "gap": "normal 8px",
+        "width": "591.906px",
+        "maxWidth": "100%",
+        "padding": "10px 14px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28px",
+        "color": "rgba(204, 210, 255, 0.32)",
+        "backgroundColor": "rgb(64, 61, 77)",
+        "borderRadius": "4px"
+      },
+      "pattern": {
+        "type": "search-bar",
+        "confidence": 0.85,
+        "signals": [
+          "class search/inputcontainer + input",
+          "compact search-like input host"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "7/24 canlı destek Oyunu biliyoruz, siteyi biliyoruz. Hızlı cevaplar, garantili!",
+      "bounds": {
+        "x": 0,
+        "y": 1038,
+        "w": 1440,
+        "h": 152
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "stat-cards",
+        "confidence": 0.4,
+        "signals": [
+          "compact trust/support strip with numeric cues"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "Takas Anında takaslar Nadir eşyalarınızı sattığınızda kar elde edin 700.000'den fazla öğeyi keşfedin…",
+      "bounds": {
+        "x": 0,
+        "y": 1270,
+        "w": 1440,
+        "h": 308
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "feature-grid",
+        "confidence": 0.4,
+        "signals": [
+          "mid-size section with multiple feature/value props"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "",
+      "bounds": {
+        "x": 0,
+        "y": 1658,
+        "w": 1440,
+        "h": 198
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": null
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "Mükemmel skini bulun Oturum aç",
+      "bounds": {
+        "x": 0,
+        "y": 1936,
+        "w": 1440,
+        "h": 700
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "cta-banner",
+        "confidence": 0.35,
+        "signals": [
+          "compact block with prominent CTA button"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "SSS CS.MONEY güvenli ve itibarlı mıdır? Elbette öyle! CS.MONEY 2016'dan beri faaliyet gösteriyor ve …",
+      "bounds": {
+        "x": 0,
+        "y": 2716,
+        "w": 1440,
+        "h": 992
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "faq-accordion",
+        "confidence": 0.8,
+        "signals": [
+          "text suggests FAQ/SSS",
+          "7+ repeated expand/toggle siblings",
+          "55 accordion items in DOM"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": null,
+      "classes": [
+        "csm_ac45a513"
+      ],
+      "textSample": "CS.MONEY Hakkında Genel bilgiler CS.MONEY, CS2 skinlerinin alım satımı ve takası için en iyi siteler…",
+      "bounds": {
+        "x": 0,
+        "y": 3788,
+        "w": 1440,
+        "h": 998
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "column",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1440px",
+        "maxWidth": "none",
+        "padding": "0px 20px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "stat-cards",
+        "confidence": 0.4,
+        "signals": [
+          "4 numeric texts + stat-like copy"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": "general-information",
+      "classes": [
+        "csm_59ab2e01"
+      ],
+      "textSample": "Genel bilgiler CS.MONEY, CS2 skinlerinin alım satımı ve takası için en iyi sitelerden biridir. Skinl…",
+      "bounds": {
+        "x": 20,
+        "y": 3866,
+        "w": 1116,
+        "h": 96
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "0px 32px",
+        "width": "1116px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "about",
+        "confidence": 0.3,
+        "signals": [
+          "id suggests about"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": "trade-mode",
+      "classes": [
+        "csm_59ab2e01"
+      ],
+      "textSample": "Takas modu Trade modu özellikleri: Beklemeden, eşyalarınızı hemen yenileriyle takas etme. CS.MONEY b…",
+      "bounds": {
+        "x": 20,
+        "y": 4162,
+        "w": 1116,
+        "h": 132
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "0px 32px",
+        "width": "1116px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "info-block",
+        "confidence": 0.55,
+        "signals": [
+          "topical id block with heading + body copy"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": "market-mode",
+      "classes": [
+        "csm_59ab2e01"
+      ],
+      "textSample": "Market modu Market modu özellikleri: Anında teslimatlı skinler dahil olmak üzere 1.000.000'den fazla…",
+      "bounds": {
+        "x": 20,
+        "y": 4326,
+        "w": 1116,
+        "h": 132
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "0px 32px",
+        "width": "1116px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "info-block",
+        "confidence": 0.55,
+        "signals": [
+          "topical id block with heading + body copy"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": "security",
+      "classes": [
+        "csm_59ab2e01"
+      ],
+      "textSample": "Güvenlik CS.MONEY tamamen güvenli bir platformdur. Verileriniz ve envanteriniz burada güvendedir. An…",
+      "bounds": {
+        "x": 20,
+        "y": 4490,
+        "w": 1116,
+        "h": 120
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "0px 32px",
+        "width": "1116px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "info-block",
+        "confidence": 0.55,
+        "signals": [
+          "topical id block with heading + body copy"
+        ]
+      }
+    },
+    {
+      "role": "section",
+      "tag": "section",
+      "id": "community",
+      "classes": [
+        "csm_59ab2e01"
+      ],
+      "textSample": "Topluluk CS.MONEY, Discord sunucusu da dahil olmak üzere sosyal medyada büyük ve samimi bir topluluğ…",
+      "bounds": {
+        "x": 20,
+        "y": 4642,
+        "w": 1116,
+        "h": 144
+      },
+      "styles": {
+        "display": "flex",
+        "position": "static",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "0px 32px",
+        "width": "1116px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "lineHeight": "normal",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": {
+        "type": "info-block",
+        "confidence": 0.55,
+        "signals": [
+          "topical id block with heading + body copy"
+        ]
+      }
+    },
+    {
+      "role": "h3",
+      "tag": "h3",
+      "id": null,
+      "classes": [
+        "csm_050c5fea"
+      ],
+      "textSample": "Popüler CS2 skinleri",
+      "bounds": {
+        "x": 16,
+        "y": 5222,
+        "w": 1408,
+        "h": 26
+      },
+      "styles": {
+        "display": "block",
+        "position": "static",
+        "flexDirection": "row",
+        "justifyContent": "normal",
+        "alignItems": "normal",
+        "gridTemplateColumns": "none",
+        "gap": "normal",
+        "width": "1408px",
+        "maxWidth": "none",
+        "padding": "0px",
+        "margin": "0px",
+        "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        "fontSize": "18px",
+        "fontWeight": "550",
+        "lineHeight": "26px",
+        "color": "rgb(255, 255, 255)",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "borderRadius": "0px"
+      },
+      "pattern": null
+    }
+  ],
+  "tree": {
+    "role": "page",
+    "tag": "body",
+    "id": null,
+    "classes": [],
+    "textSample": "Takas Market SSS ANINDA SAT ₺ TRY Steam ile giriş yap Cephanelikteki yeni skinle…",
+    "bounds": {
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 5735
+    },
+    "styles": {
+      "display": "block",
+      "position": "static",
+      "flexDirection": "row",
+      "justifyContent": "normal",
+      "alignItems": "normal",
+      "gridTemplateColumns": "none",
+      "gap": "normal",
+      "width": "1440px",
+      "maxWidth": "none",
+      "padding": "0px",
+      "margin": "0px",
+      "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgb(16, 15, 20)",
+      "borderRadius": "0px"
+    },
+    "pattern": null,
+    "children": [
+      {
+        "role": "header",
+        "tag": "div",
+        "id": "layout-page-header",
+        "classes": [
+          "csm_2b50660c"
+        ],
+        "textSample": "Takas Market SSS ANINDA SAT ₺ TRY Steam ile giriş yap",
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "w": 1440,
+          "h": 64
+        },
+        "styles": {
+          "display": "block",
+          "position": "relative",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "navigation",
+          "confidence": 0.85,
+          "signals": [
+            "nav semantic or nav/header class",
+            "header/nav host with 5 horizontal links"
+          ]
+        },
+        "children": []
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "Cephanelikteki yeni skinleri keşfet! Yeni Arabesk ve Casusluk/Teknoloji koleksiyonları şimdi erişile…",
+        "bounds": {
+          "x": 0,
+          "y": 88,
+          "w": 1440,
+          "h": 870
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "hero",
+          "confidence": 0.6,
+          "signals": [
+            "near-top tall section with h1 (42px)",
+            "h1 font-size reinforces hero"
+          ]
+        },
+        "children": [
+          {
+            "role": "div",
+            "tag": "div",
+            "id": null,
+            "classes": [
+              "InputContainer-module_container__oDstE",
+              "InputContainer-module_size-lg__9Q0oa",
+              "Input-module_container__ynU7n",
+              "SearchInput-module_container__WZ8PL"
+            ],
+            "textSample": "",
+            "bounds": {
+              "x": 360,
+              "y": 620,
+              "w": 592,
+              "h": 48
+            },
+            "styles": {
+              "display": "flex",
+              "position": "relative",
+              "flexDirection": "row",
+              "justifyContent": "normal",
+              "alignItems": "center",
+              "gridTemplateColumns": "none",
+              "gap": "normal 8px",
+              "width": "591.906px",
+              "maxWidth": "100%",
+              "padding": "10px 14px",
+              "margin": "0px",
+              "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+              "fontSize": "18px",
+              "fontWeight": "400",
+              "lineHeight": "28px",
+              "color": "rgba(204, 210, 255, 0.32)",
+              "backgroundColor": "rgb(64, 61, 77)",
+              "borderRadius": "4px"
+            },
+            "pattern": {
+              "type": "search-bar",
+              "confidence": 0.85,
+              "signals": [
+                "class search/inputcontainer + input",
+                "compact search-like input host"
+              ]
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "7/24 canlı destek Oyunu biliyoruz, siteyi biliyoruz. Hızlı cevaplar, garantili!",
+        "bounds": {
+          "x": 0,
+          "y": 1038,
+          "w": 1440,
+          "h": 152
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "stat-cards",
+          "confidence": 0.4,
+          "signals": [
+            "compact trust/support strip with numeric cues"
+          ]
+        },
+        "children": []
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "Takas Anında takaslar Nadir eşyalarınızı sattığınızda kar elde edin 700.000'den fazla öğeyi keşfedin…",
+        "bounds": {
+          "x": 0,
+          "y": 1270,
+          "w": 1440,
+          "h": 308
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "feature-grid",
+          "confidence": 0.4,
+          "signals": [
+            "mid-size section with multiple feature/value props"
+          ]
+        },
+        "children": []
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "",
+        "bounds": {
+          "x": 0,
+          "y": 1658,
+          "w": 1440,
+          "h": 198
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": null,
+        "children": []
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "Mükemmel skini bulun Oturum aç",
+        "bounds": {
+          "x": 0,
+          "y": 1936,
+          "w": 1440,
+          "h": 700
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "cta-banner",
+          "confidence": 0.35,
+          "signals": [
+            "compact block with prominent CTA button"
+          ]
+        },
+        "children": []
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "SSS CS.MONEY güvenli ve itibarlı mıdır? Elbette öyle! CS.MONEY 2016'dan beri faaliyet gösteriyor ve …",
+        "bounds": {
+          "x": 0,
+          "y": 2716,
+          "w": 1440,
+          "h": 992
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "faq-accordion",
+          "confidence": 0.8,
+          "signals": [
+            "text suggests FAQ/SSS",
+            "7+ repeated expand/toggle siblings",
+            "55 accordion items in DOM"
+          ]
+        },
+        "children": []
+      },
+      {
+        "role": "section",
+        "tag": "section",
+        "id": null,
+        "classes": [
+          "csm_ac45a513"
+        ],
+        "textSample": "CS.MONEY Hakkında Genel bilgiler CS.MONEY, CS2 skinlerinin alım satımı ve takası için en iyi siteler…",
+        "bounds": {
+          "x": 0,
+          "y": 3788,
+          "w": 1440,
+          "h": 998
+        },
+        "styles": {
+          "display": "flex",
+          "position": "static",
+          "flexDirection": "column",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1440px",
+          "maxWidth": "none",
+          "padding": "0px 20px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "16px",
+          "fontWeight": "400",
+          "lineHeight": "normal",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": {
+          "type": "stat-cards",
+          "confidence": 0.4,
+          "signals": [
+            "4 numeric texts + stat-like copy"
+          ]
+        },
+        "children": [
+          {
+            "role": "section",
+            "tag": "section",
+            "id": "general-information",
+            "classes": [
+              "csm_59ab2e01"
+            ],
+            "textSample": "Genel bilgiler CS.MONEY, CS2 skinlerinin alım satımı ve takası için en iyi sitelerden biridir. Skinl…",
+            "bounds": {
+              "x": 20,
+              "y": 3866,
+              "w": 1116,
+              "h": 96
+            },
+            "styles": {
+              "display": "flex",
+              "position": "static",
+              "flexDirection": "row",
+              "justifyContent": "normal",
+              "alignItems": "normal",
+              "gridTemplateColumns": "none",
+              "gap": "0px 32px",
+              "width": "1116px",
+              "maxWidth": "none",
+              "padding": "0px",
+              "margin": "0px",
+              "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "lineHeight": "normal",
+              "color": "rgb(255, 255, 255)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "borderRadius": "0px"
+            },
+            "pattern": {
+              "type": "about",
+              "confidence": 0.3,
+              "signals": [
+                "id suggests about"
+              ]
+            },
+            "children": []
+          },
+          {
+            "role": "section",
+            "tag": "section",
+            "id": "trade-mode",
+            "classes": [
+              "csm_59ab2e01"
+            ],
+            "textSample": "Takas modu Trade modu özellikleri: Beklemeden, eşyalarınızı hemen yenileriyle takas etme. CS.MONEY b…",
+            "bounds": {
+              "x": 20,
+              "y": 4162,
+              "w": 1116,
+              "h": 132
+            },
+            "styles": {
+              "display": "flex",
+              "position": "static",
+              "flexDirection": "row",
+              "justifyContent": "normal",
+              "alignItems": "normal",
+              "gridTemplateColumns": "none",
+              "gap": "0px 32px",
+              "width": "1116px",
+              "maxWidth": "none",
+              "padding": "0px",
+              "margin": "0px",
+              "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "lineHeight": "normal",
+              "color": "rgb(255, 255, 255)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "borderRadius": "0px"
+            },
+            "pattern": {
+              "type": "info-block",
+              "confidence": 0.55,
+              "signals": [
+                "topical id block with heading + body copy"
+              ]
+            },
+            "children": []
+          },
+          {
+            "role": "section",
+            "tag": "section",
+            "id": "market-mode",
+            "classes": [
+              "csm_59ab2e01"
+            ],
+            "textSample": "Market modu Market modu özellikleri: Anında teslimatlı skinler dahil olmak üzere 1.000.000'den fazla…",
+            "bounds": {
+              "x": 20,
+              "y": 4326,
+              "w": 1116,
+              "h": 132
+            },
+            "styles": {
+              "display": "flex",
+              "position": "static",
+              "flexDirection": "row",
+              "justifyContent": "normal",
+              "alignItems": "normal",
+              "gridTemplateColumns": "none",
+              "gap": "0px 32px",
+              "width": "1116px",
+              "maxWidth": "none",
+              "padding": "0px",
+              "margin": "0px",
+              "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "lineHeight": "normal",
+              "color": "rgb(255, 255, 255)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "borderRadius": "0px"
+            },
+            "pattern": {
+              "type": "info-block",
+              "confidence": 0.55,
+              "signals": [
+                "topical id block with heading + body copy"
+              ]
+            },
+            "children": []
+          },
+          {
+            "role": "section",
+            "tag": "section",
+            "id": "security",
+            "classes": [
+              "csm_59ab2e01"
+            ],
+            "textSample": "Güvenlik CS.MONEY tamamen güvenli bir platformdur. Verileriniz ve envanteriniz burada güvendedir. An…",
+            "bounds": {
+              "x": 20,
+              "y": 4490,
+              "w": 1116,
+              "h": 120
+            },
+            "styles": {
+              "display": "flex",
+              "position": "static",
+              "flexDirection": "row",
+              "justifyContent": "normal",
+              "alignItems": "normal",
+              "gridTemplateColumns": "none",
+              "gap": "0px 32px",
+              "width": "1116px",
+              "maxWidth": "none",
+              "padding": "0px",
+              "margin": "0px",
+              "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "lineHeight": "normal",
+              "color": "rgb(255, 255, 255)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "borderRadius": "0px"
+            },
+            "pattern": {
+              "type": "info-block",
+              "confidence": 0.55,
+              "signals": [
+                "topical id block with heading + body copy"
+              ]
+            },
+            "children": []
+          },
+          {
+            "role": "section",
+            "tag": "section",
+            "id": "community",
+            "classes": [
+              "csm_59ab2e01"
+            ],
+            "textSample": "Topluluk CS.MONEY, Discord sunucusu da dahil olmak üzere sosyal medyada büyük ve samimi bir topluluğ…",
+            "bounds": {
+              "x": 20,
+              "y": 4642,
+              "w": 1116,
+              "h": 144
+            },
+            "styles": {
+              "display": "flex",
+              "position": "static",
+              "flexDirection": "row",
+              "justifyContent": "normal",
+              "alignItems": "normal",
+              "gridTemplateColumns": "none",
+              "gap": "0px 32px",
+              "width": "1116px",
+              "maxWidth": "none",
+              "padding": "0px",
+              "margin": "0px",
+              "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+              "fontSize": "16px",
+              "fontWeight": "400",
+              "lineHeight": "normal",
+              "color": "rgb(255, 255, 255)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "borderRadius": "0px"
+            },
+            "pattern": {
+              "type": "info-block",
+              "confidence": 0.55,
+              "signals": [
+                "topical id block with heading + body copy"
+              ]
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "role": "h3",
+        "tag": "h3",
+        "id": null,
+        "classes": [
+          "csm_050c5fea"
+        ],
+        "textSample": "Popüler CS2 skinleri",
+        "bounds": {
+          "x": 16,
+          "y": 5222,
+          "w": 1408,
+          "h": 26
+        },
+        "styles": {
+          "display": "block",
+          "position": "static",
+          "flexDirection": "row",
+          "justifyContent": "normal",
+          "alignItems": "normal",
+          "gridTemplateColumns": "none",
+          "gap": "normal",
+          "width": "1408px",
+          "maxWidth": "none",
+          "padding": "0px",
+          "margin": "0px",
+          "fontFamily": "Inter, -apple-system, system-ui, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+          "fontSize": "18px",
+          "fontWeight": "550",
+          "lineHeight": "26px",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "borderRadius": "0px"
+        },
+        "pattern": null,
+        "children": []
+      }
+    ]
+  }
+}

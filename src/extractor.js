@@ -18,6 +18,8 @@
     palette.json    — dominant colors from screenshot
     rendered.html   — raw rendered DOM (reference only)
     scaffold/       — React+Tailwind starter (when --scaffold)
+    ai-brief.json   — compact AI rebuild brief
+    ai-brief.md     — same brief as readable Markdown
 */
 
 const fs = require('fs');
@@ -35,6 +37,7 @@ const {
   buildPatternsSummary,
 } = require('./skeleton');
 const { generateScaffold } = require('./scaffold');
+const { buildAiBrief, briefToMarkdown } = require('./ai-brief');
 
 const argv = minimist(process.argv.slice(2), {
   boolean: ['scaffold', 'force'],
@@ -44,7 +47,12 @@ const configPath = argv.config || 'example-config.json';
 function loadConfig() {
   let config = {};
   if (fs.existsSync(configPath)) {
-    config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    try {
+      config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    } catch (err) {
+      console.error(`Invalid JSON in config file "${configPath}": ${err.message}`);
+      process.exit(1);
+    }
   }
 
   const target = argv.url || argv.u || config.target;
@@ -67,12 +75,29 @@ function loadConfig() {
     process.exit(2);
   }
 
+  const viewportWidth = Number(argv.width || config.viewportWidth || 1440);
+  const viewportHeight = Number(argv.height || config.viewportHeight || 900);
+  const waitMs = Number(argv.wait || config.waitMs || 1500);
+
+  if (!Number.isFinite(viewportWidth) || viewportWidth <= 0) {
+    console.error(`Invalid --width / viewportWidth: must be a positive number, got "${argv.width || config.viewportWidth}".`);
+    process.exit(1);
+  }
+  if (!Number.isFinite(viewportHeight) || viewportHeight <= 0) {
+    console.error(`Invalid --height / viewportHeight: must be a positive number, got "${argv.height || config.viewportHeight}".`);
+    process.exit(1);
+  }
+  if (!Number.isFinite(waitMs) || waitMs < 0) {
+    console.error(`Invalid --wait / waitMs: must be a non-negative number, got "${argv.wait || config.waitMs}".`);
+    process.exit(1);
+  }
+
   return {
     target,
     outDir: argv.out || config.outDir || './out',
-    viewportWidth: Number(argv.width || config.viewportWidth || 1440),
-    viewportHeight: Number(argv.height || config.viewportHeight || 900),
-    waitMs: Number(argv.wait || config.waitMs || 1500),
+    viewportWidth,
+    viewportHeight,
+    waitMs,
     scaffold: argv.scaffold === true || config.scaffold === true,
     framework: String(argv.framework || config.framework || 'react').toLowerCase(),
   };
@@ -250,6 +275,23 @@ function writeJson(file, data) {
       }
     }
 
+    const aiBrief = buildAiBrief({
+      source: extracted.url || url,
+      title: extracted.title,
+      generatedAt,
+      landmarks: extracted.landmarks || [],
+      tokens: extracted.tokens || {},
+      palette: paletteOut,
+      hasScaffold: !!scaffoldResult,
+    });
+    writeJson(path.join(dest, 'ai-brief.json'), aiBrief);
+    fs.writeFileSync(path.join(dest, 'ai-brief.md'), briefToMarkdown(aiBrief), 'utf8');
+    console.log('ai-brief.json');
+    console.log('ai-brief.md');
+    if (aiBrief.warnings && aiBrief.warnings.length) {
+      for (const w of aiBrief.warnings) console.warn(`warning: ${w}`);
+    }
+
     const outputs = [
       'skeleton.html',
       'structure.json',
@@ -259,6 +301,8 @@ function writeJson(file, data) {
       'screenshot.png',
       'palette.json',
       'rendered.html',
+      'ai-brief.json',
+      'ai-brief.md',
     ];
     if (scaffoldResult) outputs.push('scaffold/');
 
@@ -268,6 +312,7 @@ function writeJson(file, data) {
       title: extracted.title,
       generatedAt,
       outputs,
+      warnings: aiBrief.warnings || [],
       scaffold: scaffoldResult
         ? {
             framework: scaffoldResult.framework,
@@ -276,16 +321,16 @@ function writeJson(file, data) {
           }
         : null,
       howToUse: scaffoldResult
-        ? 'Open scaffold/ and run npm install && npm run dev. Use patterns-summary.json + tokens as reference — replace placeholders with your own brand.'
-        : 'Open patterns-summary.json + outline.txt + tokens.json. Rebuild your own frontend using detected UI patterns and design tokens as reference — change structure, content, and brand freely.',
+        ? 'Start with ai-brief.md (or ai-brief.json) for an AI rebuild prompt, then open scaffold/ (npm install && npm run dev) and replace placeholders with your brand.'
+        : 'Start with ai-brief.md (or ai-brief.json) as the compact AI context; use patterns-summary.json + tokens.json only if you need more detail.',
     });
 
     console.log('\nDone. Start with:');
+    console.log(`  ${path.join(dest, 'ai-brief.md')}`);
     if (scaffoldResult) {
       console.log(`  ${scaffoldResult.dir}`);
     }
     console.log(`  ${path.join(dest, 'patterns-summary.json')}`);
-    console.log(`  ${path.join(dest, 'outline.txt')}`);
     console.log(`  ${path.join(dest, 'skeleton.html')}`);
   } catch (err) {
     console.error('Extraction failed:', err.message || err);

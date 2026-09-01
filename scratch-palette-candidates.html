@@ -1,0 +1,310 @@
+<title>Renk Paleti Adayları</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --page-bg: #f4f4f2;
+    --page-ink: #17181a;
+    --page-muted: #6b6d72;
+    --page-border: #dcdcd8;
+    --page-card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --page-bg: #101113;
+      --page-ink: #eceef0;
+      --page-muted: #94979d;
+      --page-border: #2a2c30;
+      --page-card: #17181b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #101113;
+    --page-ink: #eceef0;
+    --page-muted: #94979d;
+    --page-border: #2a2c30;
+    --page-card: #17181b;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--page-bg);
+    color: var(--page-ink);
+    font-family: "Manrope", system-ui, sans-serif;
+    margin: 0;
+    padding: 48px 24px 80px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+  }
+  .intro {
+    max-width: 62ch;
+    color: var(--page-muted);
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 0 28px;
+  }
+
+  .rules {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 48px;
+    padding: 0;
+    list-style: none;
+  }
+  .rules li {
+    border: 1px solid var(--page-border);
+    border-radius: 3px;
+    padding: 7px 12px;
+    font-size: 13px;
+    color: var(--page-muted);
+  }
+  .rules li b { color: var(--page-ink); font-weight: 600; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .card {
+    background: var(--page-card);
+    border: 1px solid var(--page-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .card-head {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid var(--page-border);
+  }
+  .card-head h2 {
+    margin: 0 0 4px;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .card-head p {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--page-muted);
+    line-height: 1.5;
+  }
+
+  /* ---- live demo strip: literal hex values, not page tokens on purpose ---- */
+  .demo {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .demo-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .demo-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+  .demo-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  .demo-stat { font-size: 12.5px; }
+  .demo-stat .num { font-size: 20px; font-weight: 700; display: block; }
+  .demo-btn {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 18px;
+    font-family: "Manrope", sans-serif;
+    font-weight: 700;
+    font-size: 13.5px;
+    cursor: default;
+    white-space: nowrap;
+  }
+  .demo-card {
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  /* ---- swatch rail ---- */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 0;
+    border-top: 1px solid var(--page-border);
+  }
+  .swatch {
+    padding: 14px 10px 10px;
+    border-right: 1px solid var(--page-border);
+    border-bottom: 1px solid var(--page-border);
+  }
+  .swatch:nth-child(-n+100) { }
+  .swatch-chip {
+    width: 100%;
+    height: 34px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(0,0,0,0.08);
+  }
+  .swatch-label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--page-muted);
+    margin: 0 0 2px;
+  }
+  .swatch-hex {
+    font-size: 11px;
+    color: var(--page-ink);
+  }
+
+  footer {
+    max-width: 62ch;
+    margin: 56px auto 0;
+    color: var(--page-muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+</style>
+
+<div class="wrap">
+  <h1>Renk Paleti Adayları</h1>
+  <p class="intro">
+    Yeni frontend için 3 aday palet. Üçü de koyu zemin, düz (flat) renk —
+    hiçbirinde gradient/geçiş yok. Aşağıdaki her kart kendi gerçek renkleriyle
+    render ediliyor (sayfanın kendi açık/koyu temasından bağımsız, çünkü
+    burada gösterilen tam olarak önerilen hex değerleri).
+  </p>
+
+  <ul class="rules">
+    <li><b>Kural 1</b> — düz renk, gradient yok</li>
+    <li><b>Kural 2</b> — neon / aşırı doygun renk yok</li>
+    <li><b>Kural 3</b> — rakiplerin renk ailesiyle çakışmıyor</li>
+    <li><b>Kural 4</b> — metin/zemin kontrastı yeterli (WCAG AA)</li>
+  </ul>
+
+  <div class="grid">
+
+    <!-- ZÜMRÜT -->
+    <div class="card">
+      <div class="card-head">
+        <h2>Zümrüt</h2>
+        <p>Yeşil vurgu — "kazanç / güven" çağrışımı, bir takas sitesi için tematik olarak uygun. Hiçbir rakipte yok.</p>
+      </div>
+      <div class="demo" style="background:#0E1210;">
+        <div class="demo-nav" style="color:#ECEFEC;">
+          <span class="demo-dot" style="background:#2FA66B;"></span> SKINDECK
+        </div>
+        <div class="demo-row">
+          <div class="demo-stat" style="color:#8B968F;">
+            Bugünkü Hacim
+            <span class="num mono" style="color:#ECEFEC;">₺2.184.300</span>
+          </div>
+          <button class="demo-btn" style="background:#2FA66B; color:#F5FFF9;">Şimdi Takas Et</button>
+        </div>
+        <div class="demo-card" style="background:#161B18; color:#ECEFEC; border:1px solid #26302A;">
+          AK-47 | Redline <span class="mono" style="color:#2FA66B; float:right;">+%8.2</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-chip" style="background:#0E1210;"></div><p class="swatch-label">bg</p><p class="swatch-hex mono">#0E1210</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#161B18;"></div><p class="swatch-label">surface</p><p class="swatch-hex mono">#161B18</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#26302A;"></div><p class="swatch-label">border</p><p class="swatch-hex mono">#26302A</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#ECEFEC;"></div><p class="swatch-label">text</p><p class="swatch-hex mono">#ECEFEC</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#8B968F;"></div><p class="swatch-label">muted</p><p class="swatch-hex mono">#8B968F</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#2FA66B;"></div><p class="swatch-label">accent</p><p class="swatch-hex mono">#2FA66B</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#268F5C;"></div><p class="swatch-label">accent hover</p><p class="swatch-hex mono">#268F5C</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#D8483F;"></div><p class="swatch-label">danger</p><p class="swatch-hex mono">#D8483F</p></div>
+      </div>
+    </div>
+
+    <!-- KOR -->
+    <div class="card">
+      <div class="card-head">
+        <h2>Kor</h2>
+        <p>Turuncu vurgu — enerjik ama ateşli/neon değil. Skinsmonkey'nin sarısından net biçimde ayrışıyor.</p>
+      </div>
+      <div class="demo" style="background:#14100D;">
+        <div class="demo-nav" style="color:#F2ECE4;">
+          <span class="demo-dot" style="background:#D9662A;"></span> SKINDECK
+        </div>
+        <div class="demo-row">
+          <div class="demo-stat" style="color:#9C8F80;">
+            Bugünkü Hacim
+            <span class="num mono" style="color:#F2ECE4;">₺2.184.300</span>
+          </div>
+          <button class="demo-btn" style="background:#D9662A; color:#1A1208;">Şimdi Takas Et</button>
+        </div>
+        <div class="demo-card" style="background:#1C1712; color:#F2ECE4; border:1px solid #332A22;">
+          AK-47 | Redline <span class="mono" style="color:#D8483F; float:right;">−%3.1</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-chip" style="background:#14100D;"></div><p class="swatch-label">bg</p><p class="swatch-hex mono">#14100D</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#1C1712;"></div><p class="swatch-label">surface</p><p class="swatch-hex mono">#1C1712</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#332A22;"></div><p class="swatch-label">border</p><p class="swatch-hex mono">#332A22</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#F2ECE4;"></div><p class="swatch-label">text</p><p class="swatch-hex mono">#F2ECE4</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#9C8F80;"></div><p class="swatch-label">muted</p><p class="swatch-hex mono">#9C8F80</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#D9662A;"></div><p class="swatch-label">accent</p><p class="swatch-hex mono">#D9662A</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#B8551F;"></div><p class="swatch-label">accent hover</p><p class="swatch-hex mono">#B8551F</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#3FAE6B;"></div><p class="swatch-label">success</p><p class="swatch-hex mono">#3FAE6B</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#D8483F;"></div><p class="swatch-label">danger</p><p class="swatch-hex mono">#D8483F</p></div>
+      </div>
+    </div>
+
+    <!-- GECE MORU -->
+    <div class="card">
+      <div class="card-head">
+        <h2>Gece Moru</h2>
+        <p>Soluk/mat menekşe — tradeit'in parlak indigosundan çok daha sakin, "premium" hissi veriyor.</p>
+      </div>
+      <div class="demo" style="background:#121218;">
+        <div class="demo-nav" style="color:#EDEDF2;">
+          <span class="demo-dot" style="background:#6C5CE0;"></span> SKINDECK
+        </div>
+        <div class="demo-row">
+          <div class="demo-stat" style="color:#93939F;">
+            Bugünkü Hacim
+            <span class="num mono" style="color:#EDEDF2;">₺2.184.300</span>
+          </div>
+          <button class="demo-btn" style="background:#6C5CE0; color:#F3F1FF;">Şimdi Takas Et</button>
+        </div>
+        <div class="demo-card" style="background:#1A1A22; color:#EDEDF2; border:1px solid #2C2C38;">
+          AK-47 | Redline <span class="mono" style="color:#3FAE6B; float:right;">+%8.2</span>
+        </div>
+      </div>
+      <div class="swatches">
+        <div class="swatch"><div class="swatch-chip" style="background:#121218;"></div><p class="swatch-label">bg</p><p class="swatch-hex mono">#121218</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#1A1A22;"></div><p class="swatch-label">surface</p><p class="swatch-hex mono">#1A1A22</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#2C2C38;"></div><p class="swatch-label">border</p><p class="swatch-hex mono">#2C2C38</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#EDEDF2;"></div><p class="swatch-label">text</p><p class="swatch-hex mono">#EDEDF2</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#93939F;"></div><p class="swatch-label">muted</p><p class="swatch-hex mono">#93939F</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#6C5CE0;"></div><p class="swatch-label">accent</p><p class="swatch-hex mono">#6C5CE0</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#5646C4;"></div><p class="swatch-label">accent hover</p><p class="swatch-hex mono">#5646C4</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#3FAE6B;"></div><p class="swatch-label">success</p><p class="swatch-hex mono">#3FAE6B</p></div>
+        <div class="swatch"><div class="swatch-chip" style="background:#D8483F;"></div><p class="swatch-label">danger</p><p class="swatch-hex mono">#D8483F</p></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    Bu üçü de aday — hiçbiri henüz kesinleşmedi. "Şimdi Takas Et" butonu ve
+    fiyat kartı, rengin gerçek bir arayüzde nasıl duracağını görmen için.
+    Hangisi (ya da hangisinin hangi parçası) sana daha yakın geldiyse söyle,
+    onu netleştirip devam edelim.
+  </footer>
+</div>

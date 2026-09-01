@@ -1,0 +1,21 @@
+{
+  "source": "https://cs.money/",
+  "finalUrl": "https://cs.money/tr/",
+  "title": "CS.MONEY Takas Botu — CS:GO/CS2 Skin ve Eşyaları Için Hızlı Takas, Alım ve Satım Botu",
+  "generatedAt": "2026-08-09T10:20:13.525Z",
+  "outputs": [
+    "skeleton.html",
+    "structure.json",
+    "patterns-summary.json",
+    "tokens.json",
+    "outline.txt",
+    "screenshot.png",
+    "palette.json",
+    "rendered.html",
+    "ai-brief.json",
+    "ai-brief.md"
+  ],
+  "warnings": [],
+  "scaffold": null,
+  "howToUse": "Start with ai-brief.md (or ai-brief.json) as the compact AI context; use patterns-summary.json + tokens.json only if you need more detail."
+}

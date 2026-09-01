@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "source": "https://cs.money/tr/",
+    "generatedAt": "2026-08-09T10:20:13.525Z"
+  },
+  "summary": "CS.MONEY Takas Botu — CS:GO/CS2 Skin ve Eşyaları Için Hızlı Takas, Alım ve Satım Botu — use as UI reference for cs.money. Typical flow: navigation → hero → search-bar → stat-cards → feature-grid. Rebuild with your own brand, copy, and assets; do not clone the source site.",
+  "layoutFlow": [
+    "navigation",
+    "hero",
+    "search-bar",
+    "stat-cards",
+    "feature-grid",
+    "unrecognized",
+    "cta-banner",
+    "faq-accordion",
+    "stat-cards",
+    "about",
+    "info-block",
+    "unrecognized"
+  ],
+  "components": [
+    {
+      "name": "Navigation",
+      "pattern": "navigation",
+      "purpose": "Site-wide header navigation and primary CTAs.",
+      "keyElements": [
+        "logo/brand",
+        "nav links",
+        "CTA button"
+      ],
+      "designNotes": "Keep sticky/top bar compact; avoid dense menus in the first pass."
+    },
+    {
+      "name": "Hero",
+      "pattern": "hero",
+      "purpose": "Primary above-the-fold value proposition and main CTA.",
+      "keyElements": [
+        "headline",
+        "supporting line",
+        "primary CTA",
+        "optional media plane"
+      ],
+      "designNotes": "Wide, tall hero band — prefer full-bleed composition over inset cards."
+    },
+    {
+      "name": "SearchBar",
+      "pattern": "search-bar",
+      "purpose": "Primary find/filter entry for catalog or inventory.",
+      "keyElements": [
+        "search input",
+        "submit control",
+        "optional icon placeholder"
+      ],
+      "designNotes": "Center or align with hero; keep a single clear field."
+    },
+    {
+      "name": "StatCards",
+      "pattern": "stat-cards",
+      "purpose": "Trust or metric strip with short numeric highlights. (×2 landmarks collapsed).",
+      "keyElements": [
+        "3+ metric values",
+        "short labels"
+      ],
+      "designNotes": "Equal card rhythm; numbers lead, labels stay secondary. Appears ×2 in the extract."
+    },
+    {
+      "name": "FeatureGrid",
+      "pattern": "feature-grid",
+      "purpose": "Feature or benefit grid explaining product modes.",
+      "keyElements": [
+        "section title",
+        "icon placeholders",
+        "short feature copy"
+      ],
+      "designNotes": "One idea per cell; avoid card chrome unless interaction needs it."
+    },
+    {
+      "name": "Section01",
+      "pattern": "unrecognized",
+      "purpose": "Landmark without a confident pattern — treat as a custom section. (×2 landmarks collapsed).",
+      "keyElements": [
+        "section shell",
+        "placeholder content"
+      ],
+      "designNotes": "Do not invent a fake pattern; design from layout intent. Appears ×2 in the extract."
+    },
+    {
+      "name": "CtaBanner",
+      "pattern": "cta-banner",
+      "purpose": "Mid/late-page conversion band.",
+      "keyElements": [
+        "headline",
+        "short pitch",
+        "CTA button"
+      ],
+      "designNotes": "High contrast against page background; one action only."
+    },
+    {
+      "name": "FaqAccordion",
+      "pattern": "faq-accordion",
+      "purpose": "Expandable Q&A for objections and trust.",
+      "keyElements": [
+        "section title",
+        "question rows",
+        "expand/collapse answers"
+      ],
+      "designNotes": "Start with one open item; keep answers short."
+    },
+    {
+      "name": "About",
+      "pattern": "about",
+      "purpose": "Short brand/product explanation block.",
+      "keyElements": [
+        "heading",
+        "paragraph"
+      ],
+      "designNotes": "Keep copy brief; link out for deep detail if needed."
+    },
+    {
+      "name": "InfoBlock",
+      "pattern": "info-block",
+      "purpose": "Topical information section (mode, security, community, etc.). (×4 landmarks collapsed).",
+      "keyElements": [
+        "heading",
+        "body copy"
+      ],
+      "designNotes": "Repeatable content section with clear id-level topic. Appears ×4 in the extract."
+    }
+  ],
+  "designSystem": {
+    "colors": {
+      "background": "#100f14",
+      "text": "#ffffff",
+      "accent": "#d91b88",
+      "surface": "#1c1a24",
+      "muted": "#bbb9c7"
+    },
+    "typography": "Inter; body ~16px, display up to ~42px.",
+    "spacing": "Spacing scale sampled from page (~4px, 8px, 10px, 12px …).",
+    "radius": "Radius roles: corners 4px; pills 50px; avatars circle; full=9999px."
+  },
+  "scaffoldPath": null,
+  "usageHint": "Give this brief to an AI as the only site-reference context: rebuild the layoutFlow with your brand using designSystem tokens; treat components as empty intent shells, not content to copy."
+}

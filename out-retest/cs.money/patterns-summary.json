@@ -1,0 +1,80 @@
+{
+  "source": "https://cs.money/tr/",
+  "generatedAt": "2026-08-09T10:20:13.525Z",
+  "detected": [
+    {
+      "pattern": "info-block",
+      "count": 4,
+      "landmarkIndices": [
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "pattern": "stat-cards",
+      "count": 2,
+      "landmarkIndices": [
+        3,
+        8
+      ]
+    },
+    {
+      "pattern": "about",
+      "count": 1,
+      "landmarkIndices": [
+        9
+      ]
+    },
+    {
+      "pattern": "cta-banner",
+      "count": 1,
+      "landmarkIndices": [
+        6
+      ]
+    },
+    {
+      "pattern": "faq-accordion",
+      "count": 1,
+      "landmarkIndices": [
+        7
+      ]
+    },
+    {
+      "pattern": "feature-grid",
+      "count": 1,
+      "landmarkIndices": [
+        4
+      ]
+    },
+    {
+      "pattern": "hero",
+      "count": 1,
+      "landmarkIndices": [
+        1
+      ]
+    },
+    {
+      "pattern": "navigation",
+      "count": 1,
+      "landmarkIndices": [
+        0
+      ]
+    },
+    {
+      "pattern": "search-bar",
+      "count": 1,
+      "landmarkIndices": [
+        2
+      ]
+    }
+  ],
+  "unrecognized": 2,
+  "footerProbe": {
+    "footerTags": 0,
+    "contentinfoRoles": 0,
+    "footerClassOrId": 0,
+    "footerLikeLandmarks": 0
+  }
+}

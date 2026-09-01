@@ -12,6 +12,7 @@ Site klonu üretmez. Amaç: referans alıp **kendi arayüzünü yeniden kurmak**
 
 | Dosya / klasör | Ne işe yarar |
 |----------------|--------------|
+| `ai-brief.json` / `ai-brief.md` | AI'a verilecek öz özet (layout + design decisions) |
 | `patterns-summary.json` | Tanınan UI pattern'leri + `unrecognized` sayısı |
 | `outline.txt` | Pattern listesi + yapı ağacı (okunabilir) |
 | `structure.json` | Landmark ağacı (bounds, pattern, textSample) |
@@ -93,12 +94,16 @@ npm run dev
 
 ---
 
+## AI brief
+
+Her extract sonrası `ai-brief.json` + `ai-brief.md` üretilir: ham DOM/CSS yok; sadece layout akışı, component amaçları ve design system özeti (~birkaç KB). Claude / ChatGPT / Cursor'a bu dosyayı vermen yeterli.
+
 ## Nasıl kullanılır?
 
 1. Hedef siteyi çıkar (`--scaffold` önerilir).
-2. `patterns-summary.json` + `outline.txt` ile bölümleri anla.
-3. `scaffold/` içinde kendi içeriğini ve markanı koy — veya `skeleton.html` / `tokens.json` ile sıfırdan kur.
-4. Birebir kopyalama; referans / ilham için kullan.
+2. `ai-brief.md` (veya `.json`) dosyasını AI asistanına ver.
+3. İstersen `scaffold/` içinde `npm install && npm run dev` ile boş projeyi aç.
+4. Kendi içeriğini ve markanı koy — birebir kopyalama.
 
 ---
 

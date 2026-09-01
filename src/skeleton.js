@@ -24,7 +24,8 @@ function pageExtractScript() {
     'header', 'nav', 'main', 'footer', 'aside', 'section', 'article',
     '[role="banner"]', '[role="navigation"]', '[role="main"]', '[role="contentinfo"]',
     '[class*="footer" i]', '[id*="footer" i]',
-    '[id*="header" i]', '[class*="navbar" i]', '[class*="NavBar" i]',
+    '[class*="header" i]', '[id*="header" i]', '[class*="navbar" i]', '[class*="NavBar" i]',
+    '[class*="toolbar" i]', '[class*="navigation" i]',
     '[id*="layout-page-header" i]',
     'h1', 'h2', 'h3',
   ].join(',');
@@ -36,8 +37,8 @@ function pageExtractScript() {
     const cls = (el.className && typeof el.className === 'string' ? el.className : '').toLowerCase();
     const hint = `${id} ${cls} ${role}`;
 
-    if (tag === 'header' || role === 'banner' || /header|navbar|nav-bar|topbar/.test(hint)) return 'header';
-    if (tag === 'nav' || role === 'navigation' || /(^|\s)nav(\s|$)/.test(hint)) return 'nav';
+    if (tag === 'header' || role === 'banner' || /header|navbar|nav-bar|topbar|toolbar/.test(hint)) return 'header';
+    if (tag === 'nav' || role === 'navigation' || /(^|[\s_-])nav([\s_-]|$)|navigation/.test(hint)) return 'nav';
     if (tag === 'footer' || role === 'contentinfo' || /footer/.test(hint)) return 'footer';
     if (tag === 'aside' || role === 'complementary' || /sidebar|aside/.test(hint)) return 'aside';
     if (tag === 'main' || role === 'main' || /main-content|page-content/.test(hint)) return 'main';
@@ -222,7 +223,7 @@ function pageExtractScript() {
       tag === 'nav' ||
       roleAttr === 'navigation' ||
       /(^|[\s_-])(nav|navbar|menu)([\s_-]|$)/.test(hint) ||
-      /layout-page-header|site-header|topbar/.test(hint)
+      /navigation|layout-page-header|site-header|topbar/.test(hint)
     ) {
       add('navigation', 0.4, "nav semantic or nav/header class");
     }
@@ -428,7 +429,7 @@ function pageExtractScript() {
       add('navigation', 0.5, 'tag/role is nav');
     }
     if (
-      (tag === 'header' || roleAttr === 'banner' || /header|navbar|topbar|layout-page-header/.test(hint)) &&
+      (tag === 'header' || roleAttr === 'banner' || /header|navbar|topbar|toolbar|layout-page-header/.test(hint)) &&
       horizontalNavLinks.length >= 2
     ) {
       add('navigation', 0.45, `header/nav host with ${horizontalNavLinks.length} horizontal links`);
@@ -597,7 +598,7 @@ function pageExtractScript() {
     if (repeated && repeated.length >= 3 && (repeated[0].s.hasToggle || accordionItems.length >= 3)) {
       add('faq-accordion', 0.4, `${repeated.length}+ repeated expand/toggle siblings`);
     }
-    if (accordionItems.length >= 3) {
+    if (accordionItems.length >= 3 && !/header|navbar|toolbar|topbar/.test(hint)) {
       add('faq-accordion', scores['faq-accordion'] ? 0.2 : 0.4, `${accordionItems.length} accordion items in DOM`);
     }
 
@@ -605,13 +606,16 @@ function pageExtractScript() {
     const h1 = el.querySelector('h1');
     const heroLikeTag =
       tag === 'section' || tag === 'header' || tag === 'main' || tag === 'div' || tag === 'article' || roleAttr === 'banner';
-    if (h1 && heroLikeTag && bounds.y < 300 && bounds.h >= 280) {
+    // A hero is a landing visual, not the page's entire main-content wrapper —
+    // cap by an absolute size or by share of total page height.
+    const heroSizeOk = (h) => h <= 900 || h < pageH * 0.5;
+    if (h1 && heroLikeTag && bounds.y < 300 && bounds.h >= 280 && heroSizeOk(bounds.h)) {
       const fs = parseFloat(getComputedStyle(h1).fontSize) || 0;
       add('hero', 0.4, `near-top tall section with h1 (${Math.round(fs) || '?'}px)`);
       if (fs >= 24) add('hero', 0.2, 'h1 font-size reinforces hero');
     }
     // hero-like even with h2 slider titles near top
-    if (!h1 && heroLikeTag && bounds.y < 200 && bounds.h >= 500 && el.querySelectorAll('h2').length >= 1) {
+    if (!h1 && heroLikeTag && bounds.y < 200 && bounds.h >= 500 && heroSizeOk(bounds.h) && el.querySelectorAll('h2').length >= 1) {
       add('hero', 0.35, 'near-top tall landing/slider section');
     }
 
@@ -923,29 +927,75 @@ function pageExtractScript() {
     });
   }
 
+  function isRecognized(item) {
+    return !!(item.pattern && item.pattern.type);
+  }
+
+  // Same-pattern nesting: keep outermost only.
+  // If an ancestor landmark already has pattern X, this child is part of that
+  // parent — do not emit it as another X (fixes footer-row / footer-section spam).
+  const nestedSamePattern = new Set();
+  for (const item of deduped) {
+    if (!isRecognized(item)) continue;
+    const type = item.pattern.type;
+    const coveredByAncestor = deduped.some(
+      (ancestor) =>
+        ancestor !== item &&
+        ancestor.pattern &&
+        ancestor.pattern.type === type &&
+        ancestor.el.contains(item.el)
+    );
+    if (coveredByAncestor) nestedSamePattern.add(item);
+  }
+
   // Drop headings that are already covered by a recognized parent pattern.
   // Lone headings stay with pattern: null (honest unrecognized).
   function isHeadingItem(item) {
     return /^h[1-6]$/.test(item.tag);
   }
-  function isRecognized(item) {
-    return !!(item.pattern && item.pattern.type);
-  }
 
   const coveredHeadings = new Set();
   for (const item of deduped) {
-    if (!isHeadingItem(item)) continue;
+    if (!isHeadingItem(item) || nestedSamePattern.has(item)) continue;
     const covered = deduped.some(
       (parent) =>
         parent !== item &&
         isRecognized(parent) &&
+        !nestedSamePattern.has(parent) &&
         parent.el.contains(item.el)
     );
     if (covered) coveredHeadings.add(item);
     else item.pattern = null;
   }
 
-  const filtered = deduped.filter((item) => !coveredHeadings.has(item));
+  // A footer's sitemap/link-farm sub-blocks are not marketing content — never let
+  // them win a content-ish pattern just because they happen to look like N equal
+  // cards or an aria-expanded cluster (mobile "collapsible footer group" markup).
+  // Unlike coveredHeadings, we do NOT require the footer ancestor itself to have
+  // survived nestedSamePattern — being nested inside a footer in the DOM is true
+  // regardless of whether that footer landmark later gets suppressed for its own
+  // (unrelated) reasons.
+  const NON_FOOTER_CONTENT_PATTERNS = new Set([
+    'feature-grid', 'cta-banner', 'hero', 'stat-cards',
+    'product-carousel', 'testimonial', 'pricing-grid', 'faq-accordion',
+  ]);
+  const coveredByFooter = new Set();
+  for (const item of deduped) {
+    if (nestedSamePattern.has(item) || coveredHeadings.has(item)) continue;
+    if (!isRecognized(item) || !NON_FOOTER_CONTENT_PATTERNS.has(item.pattern.type)) continue;
+    const insideFooter = deduped.some(
+      (ancestor) =>
+        ancestor !== item &&
+        ancestor.pattern &&
+        ancestor.pattern.type === 'footer' &&
+        ancestor.el.contains(item.el)
+    );
+    if (insideFooter) coveredByFooter.add(item);
+  }
+
+  const filtered = deduped.filter(
+    (item) => !nestedSamePattern.has(item) && !coveredHeadings.has(item) && !coveredByFooter.has(item)
+  );
   const tree = buildLandmarkTree(filtered);
 
   // Flat list (no el refs)
