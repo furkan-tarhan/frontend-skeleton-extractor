@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  @apply bg-canvas text-primary font-sans;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.45), 0 0 46px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Diagonal light sweep — used on primary CTAs for a "shining" feel. */
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .shine-effect::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.55) 50%,
+      transparent 60%
+    );
+    background-size: 250% 100%;
+    background-position: -150% 0;
+    animation: shine-sweep 3.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes shine-sweep {
+    0% {
+      background-position: -150% 0;
+    }
+    60%,
+    100% {
+      background-position: 150% 0;
+    }
+  }
+}
